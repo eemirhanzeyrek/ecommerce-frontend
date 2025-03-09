@@ -1,7 +1,10 @@
 import React from "react";
-import Slider from "@mui/material/Slider";
+import { useNavigate } from "react-router-dom";
+import Slider from "react-slick";
 
-const productCard = ({ product }) => {
+const ProductCard = ({ product }) => {
+  const navigate = useNavigate();
+
   const settings = {
     dots: true,
     infinite: true,
@@ -11,7 +14,10 @@ const productCard = ({ product }) => {
   };
 
   return (
-    <div className="w-[250px] bg-gray-100">
+    <div
+      onClick={() => navigate(`/product/${product?._id}`)}
+      className="w-[250px] bg-gray-100"
+    >
       <Slider {...settings}>
         {product?.images?.map((image, index) => (
           <img key={index} src={image.url} alt="" />
@@ -23,4 +29,4 @@ const productCard = ({ product }) => {
   );
 };
 
-export default productCard;
+export default ProductCard;
