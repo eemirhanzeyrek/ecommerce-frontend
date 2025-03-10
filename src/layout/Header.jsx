@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import { SlBasket } from "react-icons/sl";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getKeyword } from "../redux/generalSlice";
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const [keyword, setKeyword] = useState("");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const menuItems = [
     {
@@ -19,17 +25,28 @@ const Header = () => {
     },
   ];
 
+  const keywordFunc = () => {
+    dispatch(getKeyword(keyword));
+    setKeyword("");
+    navigate("/products ");
+  };
+
   return (
     <div className="bg-gray-100 h-20 px-8 flex items-center justify-between">
       <div className="text-3xl cursor-pointer">Logo</div>
       <div className="flex items-center gap-5">
         <div className="flex items-center">
           <input
+            value={keyword}
+            onChange={(e) => setKeyword(e.target.value)}
             className="p-2 outline-none rounded-lg"
             type="text"
             placeholder="search"
           />
-          <div className="p-2 ml-1 bg-white cursor-pointer rounded-lg">
+          <div
+            onClick={keywordFunc}
+            className="p-2 ml-1 bg-white cursor-pointer rounded-lg"
+          >
             search
           </div>
         </div>

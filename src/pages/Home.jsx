@@ -13,6 +13,9 @@ const Home = () => {
 
   return (
     <>
+      <div>
+        <img src="/offer.png" alt="" />
+      </div>
       {loading ? (
         "Loading..."
       ) : (
