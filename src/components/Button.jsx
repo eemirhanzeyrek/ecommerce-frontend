@@ -2,7 +2,7 @@ import React from "react";
 
 const Button = ({ text, onClick }) => {
   return (
-    <div className="w-[200px] h-10 flex items-center justify-center text-lg bg-black text-white rounded-md">
+    <div className="w-full h-10 flex items-center justify-center text-lg bg-black text-white rounded-md">
       <Button onClick={onClick}>{text}</Button>
     </div>
   );

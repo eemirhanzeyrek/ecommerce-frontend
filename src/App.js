@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Detail from "./pages/Detail";
 import Products from "./pages/Products";
+import Auth from "./pages/Auth";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Header />
       <Routes>
         <Route exact path="/" element={<Home />} />
+        <Route exact path="/auth" element={<Auth />} />
         <Route exact path="/products" element={<Products />} />
         <Route exact path="/product/:id" element={<Detail />} />
       </Routes>
