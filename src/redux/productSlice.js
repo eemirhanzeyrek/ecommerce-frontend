@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   products: [],
+  adminProducts: [],
   product: {},
   loading: false,
 };
@@ -20,6 +21,30 @@ export const getProducts = createAsyncThunk("products", async (params) => {
     }&price[lte]=${params.price.max || 50000}&category=${params.category}`;
   }
   const response = await fetch(link);
+  return await response.json();
+});
+
+export const getAdminProducts = createAsyncThunk("admin", async () => {
+  const token = localStorage.getItem("token");
+  const response = await fetch(`http://localhost:4000/admin/products`, {
+    headers: { authorization: `Bearer ${token}` },
+  });
+  return await response.json();
+});
+
+export const addAdminProducts = createAsyncThunk("adminadd", async (data) => {
+  const token = localStorage.getItem("token");
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data),
+  };
+  const response = await fetch(
+    `http://localhost:4000/product/new`,
+    requestOptions
+  );
   return await response.json();
 });
 
@@ -47,6 +72,22 @@ export const productSlice = createSlice({
     builder.addCase(getProductDetail.fulfilled, (state, action) => {
       state.loading = false;
       state.product = action.payload;
+    });
+
+    builder.addCase(getAdminProducts.pending, (state, action) => {
+      state.loading = true;
+    });
+    builder.addCase(getAdminProducts.fulfilled, (state, action) => {
+      state.loading = false;
+      state.adminProducts = action.payload;
+    });
+
+    builder.addCase(addAdminProducts.pending, (state, action) => {
+      state.loading = true;
+    });
+    builder.addCase(addAdminProducts.fulfilled, (state, action) => {
+      state.loading = false;
+      state.adminProducts = [...state.products, action.payload];
     });
   },
 });
