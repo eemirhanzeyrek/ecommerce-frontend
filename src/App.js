@@ -10,6 +10,7 @@ import Auth from "./pages/Auth";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { profile } from "./redux/userSlice";
+import Profile from "./pages/Profile";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/auth" element={<Auth />} />
+        <Route exact path="/profile" element={<Profile />} />
         <Route exact path="/products" element={<Products />} />
         <Route exact path="/product/:id" element={<Detail />} />
       </Routes>

@@ -61,7 +61,11 @@ const Header = () => {
           {openMenu && (
             <div className="absolute right-0 mt-3 w-[200px] bg-white shadow-lg shadow-gray-400">
               {menuItems.map((item, index) => (
-                <div className="px-2 py-1 hover:bg-gray-100" key={index}>
+                <div
+                  onClick={() => (window.location = item.url)}
+                  className="px-2 py-1 hover:bg-gray-100"
+                  key={index}
+                >
                   {item.name}
                 </div>
               ))}
