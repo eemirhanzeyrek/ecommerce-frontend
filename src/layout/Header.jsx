@@ -8,6 +8,7 @@ const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [keyword, setKeyword] = useState("");
   const { user, isAuth } = useSelector((state) => state.user);
+  const { carts } = useSelector((state) => state.cart);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -30,6 +31,16 @@ const Header = () => {
     dispatch(getKeyword(keyword));
     setKeyword("");
     navigate("/products ");
+  };
+
+  const menuFunc = (item) => {
+    if (item.name === "Logout") {
+      localStorage.clear();
+      window.location = "/";
+    } else {
+      //window.location = item.url;
+      navigate(item.url);
+    }
   };
 
   return (
@@ -62,7 +73,7 @@ const Header = () => {
             <div className="absolute right-0 mt-3 w-[200px] bg-white shadow-lg shadow-gray-400">
               {menuItems.map((item, index) => (
                 <div
-                  onClick={() => (window.location = item.url)}
+                  onClick={() => menuFunc(item)}
                   className="px-2 py-1 hover:bg-gray-100"
                   key={index}
                 >
@@ -72,10 +83,13 @@ const Header = () => {
             </div>
           )}
         </div>
-        <div className="relative cursor-pointer">
+        <div
+          onClick={() => navigate("/cart")}
+          className="relative cursor-pointer"
+        >
           <SlBasket size={30} />
           <div className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center">
-            1
+            {carts?.length}
           </div>
         </div>
       </div>
