@@ -26,6 +26,16 @@ export const login = createAsyncThunk("login", async (data) => {
     body: JSON.stringify({ email: data.email, password: data.password }),
   };
   const response = await fetch(`http://localhost:4000/login`, requestOptions);
+  let res = await response.json();
+  localStorage.setItem("token", res?.token);
+  return res;
+});
+
+export const profile = createAsyncThunk("profile", async () => {
+  const token = localStorage.getItem("token");
+  const response = await fetch(`http://localhost:4000/me`, {
+    headers: { authorization: `Bearer ${token}` },
+  });
   return await response.json();
 });
 
@@ -48,6 +58,15 @@ export const userSlice = createSlice({
       state.isAuth = false;
     });
     builder.addCase(login.fulfilled, (state, action) => {
+      state.loading = false;
+      state.isAuth = true;
+      state.user = action.payload;
+    });
+    builder.addCase(profile.pending, (state, action) => {
+      state.loading = true;
+      state.isAuth = false;
+    });
+    builder.addCase(profile.fulfilled, (state, action) => {
       state.loading = false;
       state.isAuth = true;
       state.user = action.payload;

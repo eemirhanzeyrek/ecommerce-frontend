@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { SlBasket } from "react-icons/sl";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getKeyword } from "../redux/generalSlice";
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [keyword, setKeyword] = useState("");
+  const { user, isAuth } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -54,7 +55,7 @@ const Header = () => {
           <img
             onClick={() => setOpenMenu(!openMenu)}
             className="w-8 h-8 rounded-full cursor-pointer"
-            src="/default.png"
+            src={user?.user ? user?.user?.avatar?.url : "/default.png"}
             alt="profile"
           />
           {openMenu && (

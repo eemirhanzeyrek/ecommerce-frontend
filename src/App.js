@@ -7,8 +7,18 @@ import "slick-carousel/slick/slick-theme.css";
 import Detail from "./pages/Detail";
 import Products from "./pages/Products";
 import Auth from "./pages/Auth";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { profile } from "./redux/userSlice";
 
 function App() {
+  const dispatch = useDispatch();
+  const { user, isAuth } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    dispatch(profile());
+  }, [dispatch]);
+
   return (
     <Router>
       <Header />

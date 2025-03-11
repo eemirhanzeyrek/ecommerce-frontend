@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "../components/Input";
 import Button from "../components/Button";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login, register } from "../redux/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const Auth = () => {
   const [signUp, setSignUp] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { user, isAuth } = useSelector((state) => state.user);
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -37,6 +40,12 @@ const Auth = () => {
       setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     }
   };
+
+  useEffect(() => {
+    if (isAuth) {
+      navigate("/");
+    }
+  }, [isAuth]);
 
   return (
     <div className="min-h-screen flex items-center justify-center">
