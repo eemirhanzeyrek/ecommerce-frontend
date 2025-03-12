@@ -17,7 +17,7 @@ const ForgotPassword = () => {
   return (
     <div className="flex h-screen items-center justify-center">
       <div className="w-1/3 space-y-3">
-        <div className="text-2xl">i forgot my password</div>
+        <div className="text-2xl">I forgot my password</div>
         <Input
           placeholder={"email"}
           onchange={(e) => setEmail(e.target.value)}
@@ -25,7 +25,7 @@ const ForgotPassword = () => {
           id={""}
           type={"text"}
         />
-        <Button name={"submit"} onClick={forgotFunc} />
+        <Button name={"Submit"} onClick={forgotFunc} />
       </div>
     </div>
   );

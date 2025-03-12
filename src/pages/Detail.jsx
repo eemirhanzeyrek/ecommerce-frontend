@@ -71,16 +71,16 @@ const Detail = () => {
               <div className="text-xl">{product?.product?.description}</div>
               {product?.product?.stock > 0 ? (
                 <div className="text-xl text-green-500">
-                  stock quantity : {product?.product?.stock}
+                  Stock quantity : {product?.product?.stock}
                 </div>
               ) : (
-                <div>product is out of stock</div>
+                <div>Product is out of stock</div>
               )}
               <div className="text-xl">
-                category : {product?.product?.category}
+                Category : {product?.product?.category}
               </div>
               <div className="text-xl flex items-center gap-3">
-                rating : {product?.product?.rating}
+                Rating : {product?.product?.rating}
                 <BsFillStarFill />{" "}
               </div>
               <div className="flex items-center gap-4">
@@ -92,7 +92,7 @@ const Detail = () => {
                   +
                 </div>
               </div>
-              <Button text={"add to cart"} onClick={addCart} />
+              <Button text={"Add to cart"} onClick={addCart} />
             </div>
           </div>
         </div>

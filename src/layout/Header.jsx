@@ -59,7 +59,7 @@ const Header = () => {
             onClick={keywordFunc}
             className="p-2 ml-1 bg-white cursor-pointer rounded-lg"
           >
-            search
+            Search
           </div>
         </div>
         <div className="relative">

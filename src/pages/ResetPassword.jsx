@@ -19,7 +19,7 @@ const ResetPassword = () => {
   return (
     <div className="flex h-screen items-center justify-center">
       <div className="w-1/3 space-y-3">
-        <div className="text-2xl">create new password</div>
+        <div className="text-2xl">Create new password</div>
         <Input
           placeholder={"new password"}
           onchange={(e) => setPassword(e.target.value)}
@@ -27,7 +27,7 @@ const ResetPassword = () => {
           id={""}
           type={"password"}
         />
-        <Button name={"submit"} onClick={forgotFunc} />
+        <Button name={"Submit"} onClick={forgotFunc} />
       </div>
     </div>
   );

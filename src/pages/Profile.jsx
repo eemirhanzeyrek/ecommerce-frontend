@@ -18,7 +18,7 @@ const Profile = () => {
         <div className="space-y-2">
           <div className="text-2xl font-bold">{user?.user?.name}</div>
           <div className="text-xl">{user?.user?.email}</div>
-          <Button name={"profile update"} onClick={() => {}} />
+          <Button name={"Profile Update"} onClick={() => {}} />
         </div>
       </div>
     </div>

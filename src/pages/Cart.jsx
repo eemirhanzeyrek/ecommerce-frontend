@@ -26,13 +26,13 @@ const Cart = () => {
                 onClick={() => deleteItem(cart?.id)}
                 className="w-[150px] h-12 flex items-center justify-center rounded-md bg-red-500 text-white"
               >
-                delete
+                Delete
               </div>
             </div>;
           })}
         </div>
       ) : (
-        <div>there are no products in your cart</div>
+        <div>There are no products in your cart</div>
       )}
     </div>
   );

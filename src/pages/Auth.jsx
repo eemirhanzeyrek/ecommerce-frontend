@@ -50,7 +50,7 @@ const Auth = () => {
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="w-1/3 -mt-10 border p-4 rounded-md">
-        <div className="text-2xl">{signUp ? "sign up" : "sign in"}</div>
+        <div className="text-2xl">{signUp ? "Sign up" : "Sign in"}</div>
         {signUp && (
           <Input
             onChange={handleChange}
@@ -93,10 +93,10 @@ const Auth = () => {
           className="text-red-500 text-sm cursor-pointer my-2"
           onClick={() => setSignUp(!signUp)}
         >
-          {signUp ? "sign in" : "sign up"}
+          {signUp ? "Sign in" : "Sign up"}
         </div>
         <Button
-          name={signUp ? "sign up" : "sign in"}
+          name={signUp ? "Sign up" : "Sign in"}
           onClick={signUp ? signUpFunc : signInFunc}
         />
       </div>

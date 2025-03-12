@@ -83,6 +83,7 @@ export const userSlice = createSlice({
       state.isAuth = true;
       state.user = action.payload;
     });
+
     builder.addCase(login.pending, (state, action) => {
       state.loading = true;
       state.isAuth = false;
@@ -92,6 +93,7 @@ export const userSlice = createSlice({
       state.isAuth = true;
       state.user = action.payload;
     });
+
     builder.addCase(profile.pending, (state, action) => {
       state.loading = true;
       state.isAuth = false;
@@ -106,12 +108,14 @@ export const userSlice = createSlice({
       state.isAuth = false;
       state.user = {};
     });
+
     builder.addCase(forgotPassword.pending, (state, action) => {
       state.loading = true;
     });
     builder.addCase(forgotPassword.fulfilled, (state, action) => {
       state.loading = false;
     });
+
     builder.addCase(resetPassword.pending, (state, action) => {
       state.loading = true;
     });

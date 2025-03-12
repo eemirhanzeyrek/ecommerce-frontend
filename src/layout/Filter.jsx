@@ -6,7 +6,7 @@ const Filter = ({ setPrice, setRating, setCategory }) => {
 
   return (
     <div className="w-[200px] mt-3 p-1">
-      <div className="my-2">filtering</div>
+      <div className="my-2">Filtering</div>
       <div className="flex items- center gap-2 my-2">
         <input
           onChange={(e) =>
@@ -25,7 +25,7 @@ const Filter = ({ setPrice, setRating, setCategory }) => {
           placeholder="max"
         />
       </div>
-      <div className="my-2">category</div>
+      <div className="my-2">Category</div>
       {categoryList.map((category, index) => (
         <div
           onClick={() => setCategory(category)}
@@ -36,7 +36,7 @@ const Filter = ({ setPrice, setRating, setCategory }) => {
         </div>
       ))}
       <hr />
-      <div className="my-2">rating</div>
+      <div className="my-2">Rating</div>
       {ratingList.map((rating, index) => (
         <div
           onClick={() => setRating(rating)}
